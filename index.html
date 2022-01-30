@@ -15,6 +15,50 @@
     </div>
   </div>
 
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="search col-lg-3">
+          
+          <form>
+            <label for="search">Search for a City</label>
+            <br>
+            <input type="text" class="city">
+          </form>
+
+          <button class = "searchBtn">Search</button>
+
+          <div class = "results">
+             <p>results goes here</p>
+          </div>
+
+      </div>
+
+      <div class="weather col-lg-9">
+          
+          <div class = "city">
+            <h1>City name</h1>
+            <p>temp:</p>
+            <p>wind:</p>
+            <p>Humidity:</p>
+            <p>UV Index:</p>
+          </div>
+
+           <div class = "forecast">
+              <h2>5-Day Forecast</h2>
+              <div id="day1" class="dayCard"></div>
+              <div id="day2" class="dayCard"></div>
+              <div id="day3" class="dayCard"></div>
+              <div id="day4" class="dayCard"></div>
+              <div id="day5" class="dayCard"></div>
+            </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="script.js"></script>
