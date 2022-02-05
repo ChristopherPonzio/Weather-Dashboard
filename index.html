@@ -18,7 +18,7 @@
   <div class="container-fluid">
     <div class="row">
 
-      <div class="search col-lg-3">
+      <div class=" left-side search col-lg-3">
           
           <form>
             <label for="search">Search for a City</label>
@@ -26,15 +26,22 @@
             <input type="text" class="city">
           </form>
 
-          <button class = "searchBtn">Search</button>
+          <button class = "searchBtn btn btn-primary mb-3">Search</button>
 
           <div class = "results">
-             <p>results goes here</p>
+            <ul class = "col-lg-3">
+             <button id = "city-1" class = "btn btn-primary mb-3">Atlanta</button>
+             <button id = "city-2" class = "btn btn-primary mb-3">Chicago</button>
+             <button id = "city-3" class = "btn btn-primary mb-3">Savannah</button>
+             <button id = "city-4">Richmond</button>
+             <button id = "city-5">Columbus</button>
+             <button id = "city-6">Agusta</button>
+            </ul>
           </div>
 
       </div>
 
-      <div class="weather col-lg-9">
+      <div class="right-side weather col-lg-9">
           
           <div class = "city">
             <h1>City name</h1>
@@ -46,11 +53,33 @@
 
            <div class = "forecast">
               <h2>5-Day Forecast</h2>
-              <div id="day1" class="dayCard"></div>
-              <div id="day2" class="dayCard"></div>
-              <div id="day3" class="dayCard"></div>
-              <div id="day4" class="dayCard"></div>
-              <div id="day5" class="dayCard"></div>
+             <div class = "row">
+              <div id="day1" class="dayCard bg-primary m-2 col-md-2">
+                <p>temp:</p>
+                <p>wind:</p>
+                <p>Humidity:</p>
+              </div>
+              <div id="day2" class="dayCard bg-primary m-2 col-md-2">
+                <p>temp:</p>
+                <p>wind:</p>
+                <p>Humidity:</p>
+              </div>
+              <div id="day3" class="dayCard bg-primary m-2 col-md-2">
+                <p>temp:</p>
+                <p>wind:</p>
+                <p>Humidity:</p>
+              </div>
+              <div id="day4" class="dayCard bg-primary m-2 col-md-2">
+                <p>temp:</p>
+                <p>wind:</p>
+                <p>Humidity:</p>
+              </div>
+              <div id="day5" class="dayCard bg-primary m-2 col-md-2">
+                <p>temp:</p>
+                <p>wind:</p>
+                <p>Humidity:</p>
+              </div>
+             </div>
             </div>
 
       </div>
