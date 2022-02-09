@@ -17,17 +17,21 @@ var day3 = document.getElementById("day3");
 var day4 = document.getElementById("day4");
 var day5 = document.getElementById("day5");
 var historyEl = document.getElementById("history");
+var historyBtn = document.getElementById("historyBtn")
 var search ;
 var cityNameValue ;
 
 
-const apiKey = "876559b85c408829a93b29a565931343";
+const apiKey = "492c98d0f802f64c5e1159bbedae749e";
 
 function handleSubmit(event) {
     event.preventDefault();
     search = searchInput.value.trim();
     searchInput.value = "";
-    getApi(search);
+    searchHistory.push(search);
+    localStorage.setItem("search", JSON.stringify(searchHistory));
+     getApi(search);
+     renderHistory();
 }
 
 //fetch lat and lon
@@ -41,33 +45,33 @@ function getApi(search) {
         .then(function (data){
             cityNameValue = data[0]["name"];
             console.log(data);
-            renderHistory(search);
             getLatLon(data[0]);
         })
         .catch( error => console.log(error) )
 		.finally( console.log('finished with fetch') )
 }
 
-//save search as button
-function renderHistory(search) {
-    searchHistory.push(search);
-    localStorage.setItem("search", JSON.stringify(searchHistory));
-   
-        const historyItem = document.createElement("button");
-        historyItem.setAttribute("type", "button");
-        historyItem.setAttribute("class", "historyButton btn btn-primary mb-3");
-        
-        historyItem.innerHTML = searchHistory;
-        historyEl.append(historyItem);
-   
+//save search in local storage
+function renderHistory() {
+    for (var i = 0; i < searchHistory.length; i++) {
+    const historyItem = document.createElement("button");
+    historyItem.setAttribute("type", "button");
+    historyItem.setAttribute("class", "historyBtn btn btn-primary mb-3");
+    historyItem.innerHTML = searchHistory[i];
+    historyEl.append(historyItem);
+    historyBtn.addEventListener("click", function() {
+        getApi(historyBtn.value);
+    })
+    }  
 }
+
 
 // fetch weather using lat lon
 function getLatLon(location) {
     var { lat, lon } = location;
     var city = location.name;
     var latLonUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly&appid=${apiKey}`;
-   
+    
     fetch(latLonUrl)
         .then(function (response) {
             return response.json();
@@ -91,7 +95,7 @@ function getLatLon(location) {
             humidityEl.innerHTML = "Humidity: " + humidityValue + " %";
             
             var uvIndexValue = data["current"]["uvi"];
-            uvIndexEl.innerHTML = "UV Index: " + uvIndexValue + "." ;
+            uvIndexEl.innerHTML = "UV Index: " + uvIndexValue;
             console.log(data);
             
             var weatherPic = data["current"]["weather"][0].icon;
@@ -99,6 +103,8 @@ function getLatLon(location) {
             picEl.setAttribute("alt", data["current"]["weather"][0].description);
 
             //Forcast
+            var forcast5day = document.getElementById("5Day");
+            forcast5day.innerHTML = "5-Day Forcast";
             var forcastDate = new Date(data["daily"][1]["dt"] * 1000);
             var forcastDay = forcastDate.getDate();
             var forcastMonth = forcastDate.getMonth() + 1;
@@ -257,8 +263,20 @@ function getLatLon(location) {
             var dayhumidityEl = document.createElement("p");
             dayhumidityEl.innerHTML = "Humidity: " + dayhumidity + " %";
             day5.append(dayhumidityEl); 
-           
         });
+    }
+    function removeElements() {
+        var daywindEl = document.querySelectorAll("daywindEl");
+        var dayhumidityEl = document.querySelectorAll("dayhumidityEl");
+        var daytempEl = document.querySelectorAll("daytempEl");
+        var dayimgEl = document.querySelectorAll("dayimgEl");
+        var dayCardDate = document.querySelectorAll("dayCardDate");
+        daywindEl.remove(daywindEl);
+        dayhumidityEl.remove();
+        daytempEl.remove();
+        dayimgEl.remove();
+        dayCardDate.remove();
+
     }
 
 
