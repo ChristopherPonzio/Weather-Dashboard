@@ -31,7 +31,8 @@ function handleSubmit(event) {
     searchHistory.push(search);
     localStorage.setItem("search", JSON.stringify(searchHistory));
      getApi(search);
-     renderHistory();
+     renderHistory(search);
+     localStorage.remove(search);
 }
 
 //fetch lat and lon
@@ -52,7 +53,8 @@ function getApi(search) {
 }
 
 //save search in local storage
-function renderHistory() {
+function renderHistory(search) {
+    console.log(searchHistory);
     for (var i = 0; i < searchHistory.length; i++) {
     const historyItem = document.createElement("button");
     historyItem.setAttribute("type", "button");
