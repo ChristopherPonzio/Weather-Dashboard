@@ -1,17 +1,15 @@
 # Weather-Dashboard# 
 
 ## Description
-
-
-## Process
- 
+This is a weather app that will give you the weather details for a city of your choosing and the 5 day forcast.
 
 ## Installation
-
+https://christopherponzio.github.io/Weather-Dashboard
+https://github.com/ChristopherPonzio/Weather-Dashboard
 
 ## Usage
-Added alt text to make it more accessible.
-![Added alt text to make it more accessible.](./assets/images/alttext-VisualStudioCode.png)
+He is a demonstration of the weather dashboard!
+![Added alt text to make it more accessible.](assets/images/WeatherDashboardHome.png)
 
 ## Credits
 1. Michelle Blackwell github: https://github/Mblackwellgca
