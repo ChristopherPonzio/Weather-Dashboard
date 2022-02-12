@@ -61,6 +61,7 @@ function renderHistory(search) {
     historyItem.setAttribute("class", "historyBtn btn btn-primary mb-3");
     historyItem.innerHTML = searchHistory[i];
     historyEl.append(historyItem);
+    historyItem.addEventListener("click", searchHistory[i].value);
     }  
 }
 
